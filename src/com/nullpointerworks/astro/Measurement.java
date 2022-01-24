@@ -1,65 +1,38 @@
 package com.nullpointerworks.astro;
 
 import com.nullpointerworks.astro.measure.IMeasurement;
-import com.nullpointerworks.astro.measure.IlligalConversionException;
-import com.nullpointerworks.astro.measure.Unit;
-import com.nullpointerworks.astro.measure.factory.AbstractMeasurementFactory;
-import com.nullpointerworks.astro.measure.factory.InchMeasurementFactory;
-import com.nullpointerworks.astro.measure.factory.MilliMeasurementFactory;
+import com.nullpointerworks.astro.measure.LengthUnit;
+import com.nullpointerworks.astro.measure.factory.AbstractLengthUnitFactory;
 
 public class Measurement implements IMeasurement
 {
-	private final IMeasurement control;
 	private final double v;
-	private final Unit u;
+	private final LengthUnit u;
+	private final AbstractLengthUnitFactory fac;
 	
-	public Measurement(double value, Unit unit) 
-	{
-		this(null, value, unit);
-	}
+	private double cv;
+	private LengthUnit cu;
 	
-	public Measurement(IMeasurement parent, double value, Unit unit) 
+	public Measurement(double value, LengthUnit unit) 
 	{
-		control = parent;
-		v = value;
-		u = unit;
-	}
-	
-	public IMeasurement getControl()
-	{
-		//if (control!=null) return control.getControl();
-		return control;
+		cv = v = value;
+		cu = u = unit;
+		fac = AbstractLengthUnitFactory.getFactory(u);
 	}
 	
 	public double getValue()
 	{
-		return v;
+		return cv;
 	}
 	
-	public Unit getUnit()
+	public LengthUnit getUnit()
 	{
-		return u;
+		return cu;
 	}
 	
-	public IMeasurement toUnit(Unit newUnit) throws IlligalConversionException
+	public void toUnit(LengthUnit newUnit)
 	{
-		if (u == newUnit) return this;
-		
-		AbstractMeasurementFactory fac;
-		switch(newUnit)
-		{
-		case MILLI:
-			fac = new MilliMeasurementFactory();
-			return fac.convert(this);
-			
-		case INCH:
-			fac = new InchMeasurementFactory();
-			return fac.convert(this);
-		
-		default: break;
-		}
-		
-		throw new IlligalConversionException();
+		cv = fac.convert(v, newUnit);
+		cu = newUnit;
 	}
-	
 }

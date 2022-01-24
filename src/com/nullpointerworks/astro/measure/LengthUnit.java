@@ -1,6 +1,6 @@
 package com.nullpointerworks.astro.measure;
 
-public enum Unit 
+public enum LengthUnit 
 {
 	/**
 	 * millimeters

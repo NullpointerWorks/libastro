@@ -2,9 +2,8 @@ package com.nullpointerworks.astro.measure;
 
 public interface IMeasurement 
 {
-	IMeasurement getControl();
 	double getValue();
-	Unit getUnit();
+	LengthUnit getUnit();
 	
-	IMeasurement toUnit(Unit newUnit) throws IlligalConversionException;
+	void toUnit(LengthUnit newUnit);
 }

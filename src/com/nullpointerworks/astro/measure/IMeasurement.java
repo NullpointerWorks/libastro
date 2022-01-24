@@ -1,9 +1,11 @@
 package com.nullpointerworks.astro.measure;
 
+import com.nullpointerworks.astro.Unit;
+
 public interface IMeasurement 
 {
 	double getValue();
-	LengthUnit getUnit();
+	Unit getUnit();
 	
-	void toUnit(LengthUnit newUnit);
+	void toUnit(Unit newUnit);
 }

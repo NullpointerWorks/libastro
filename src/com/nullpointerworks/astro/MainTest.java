@@ -23,11 +23,6 @@ dT / (fully dilated eye) = LUM lowest useful magnification
 fT / LUM = eyepiece focal length
 
 
-
-
-
-
-
 */
 
 public class MainTest 
@@ -56,7 +51,8 @@ public class MainTest
 		System.out.println("exit pupil for an eyepiece of 25mm is: "+exitPupil.getValue());
 		
 		
-		
+		IMeasurement trueFOV = scope.getTrueFieldOfView(eyepiece);
+		System.out.println("the true field of view with the eyepiece is: "+trueFOV.getValue());
 		
 		
 		

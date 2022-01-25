@@ -84,10 +84,14 @@ public class CustomTelescope implements ITelescope
 	{
 		IMeasurement mag = getMagnification(ep);
 		IMeasurement afov = ep.getApparentFieldOfView();
+		afov.toUnit(Unit.DEGREE);
 		
+		double factor = mag.getValue();
+		double fov = afov.getValue();
+		if (factor < 0.0) factor = 0.0001f; // infinity error check
+		double tfov = fov / factor;
 		
-		
-		return null;
+		return new Measurement(tfov, Unit.DEGREE);
 	}
 	
 	

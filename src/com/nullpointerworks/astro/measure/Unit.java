@@ -37,7 +37,12 @@ public enum Unit
 	RADIAN,
 	
 	/**
-	 * 
+	 * one minute of arc
+	 */
+	ARCMINUTE,
+	
+	/**
+	 * one second of arc
 	 */
 	ARCSECOND
 	

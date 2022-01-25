@@ -28,10 +28,12 @@ public class Measurement implements IMeasurement
 		return cu;
 	}
 	
-	public void toUnit(Unit newUnit)
+	public boolean toUnit(Unit newUnit)
 	{
-		if (newUnit == u) return;
+		if (!fac.compatible(newUnit)) return false;
+		if (newUnit == u) return true;
 		cv = fac.convert(v, newUnit);
 		cu = newUnit;
+		return true;
 	}
 }

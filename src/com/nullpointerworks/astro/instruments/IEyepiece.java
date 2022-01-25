@@ -1,8 +1,9 @@
 package com.nullpointerworks.astro.instruments;
 
-public interface IEyepiece 
+import com.nullpointerworks.astro.measure.IMeasurement;
+
+public interface IEyepiece
 {
-	
-	
-	
+	IMeasurement getFocalLength();
+	IMeasurement getApparentFieldOfView();
 }

@@ -1,6 +1,6 @@
 package com.nullpointerworks.astro.measure.factory;
 
-import com.nullpointerworks.astro.Unit;
+import com.nullpointerworks.astro.measure.Unit;
 
 public interface AbstractUnitFactory 
 {

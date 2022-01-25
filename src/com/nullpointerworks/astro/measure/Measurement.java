@@ -1,6 +1,5 @@
 package com.nullpointerworks.astro.measure;
 
-import com.nullpointerworks.astro.Unit;
 import com.nullpointerworks.astro.measure.factory.AbstractUnitFactory;
 
 public class Measurement implements IMeasurement

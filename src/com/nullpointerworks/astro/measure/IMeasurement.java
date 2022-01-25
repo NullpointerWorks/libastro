@@ -1,7 +1,5 @@
 package com.nullpointerworks.astro.measure;
 
-import com.nullpointerworks.astro.Unit;
-
 public interface IMeasurement 
 {
 	double getValue();

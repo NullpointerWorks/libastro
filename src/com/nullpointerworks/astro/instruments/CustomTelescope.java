@@ -97,9 +97,8 @@ public class CustomTelescope implements ITelescope
 	@Override
 	public IMeasurement getResolvingPower(IMeasurement wave)
 	{
-		wave.setUnit(Unit.NANO);
-		d.setUnit(Unit.METER);
-		
+		wave.setUnit(Unit.MILLI);
+		d.setUnit(Unit.MILLI);
 		
 		/*
 		
@@ -107,11 +106,8 @@ public class CustomTelescope implements ITelescope
 		
 		*/
 		
-		
-		StrictMath.asin(0);
-		
-		
-		
+		double theta = 1.22 * (wave.getValue() / d.getValue());
+		double resp = StrictMath.asin(theta);
 		return new Measurement(resp, Unit.RADIAN);
 	}
 	

@@ -56,8 +56,9 @@ public class MainTest
 		IMeasurement trueFOV = scope.getTrueFieldOfView(eyepiece);
 		System.out.println("the true field of view with the eyepiece is: "+trueFOV.getValue());
 		
-		
-		
+		IMeasurement wavelength = new Measurement(650.0, Unit.NANO);
+		IMeasurement resolve = scope.getResolvingPower(wavelength);
+		System.out.println("the minimum resolving power is: "+resolve.getValue() +" "+resolve.getUnit());
 		
 		
 	}

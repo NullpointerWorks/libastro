@@ -11,9 +11,13 @@ public interface AbstractUnitFactory
 	{
 		switch(unit)
 		{
-		case MILLI: return new MilliUnitFactory();
-		case INCH: return new InchUnitFactory();
+		case METER: return new MeterUnitFactory();
+		case MILLI: return new MeterUnitFactory(0.001);
+		case MICRO: return new MeterUnitFactory(0.000001);
+		case NANO: return new MeterUnitFactory(0.000000001);
+		
 		case DEGREE: return new DegreeUnitFactory();
+		case RADIAN: return new RadianUnitFactory();
 		default: return null;
 		}
 	}

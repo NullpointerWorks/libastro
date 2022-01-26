@@ -17,8 +17,8 @@ public class CustomTelescope implements ITelescope
 	
 	public IMeasurement getFocalRatio()
 	{
-		d.toUnit(Unit.MILLI);
-		fl.toUnit(Unit.MILLI);
+		d.setUnit(Unit.MILLI);
+		fl.setUnit(Unit.MILLI);
 		
 		/*
 		
@@ -38,8 +38,8 @@ public class CustomTelescope implements ITelescope
 	public IMeasurement getMagnification(IEyepiece ep) 
 	{
 		IMeasurement efl = ep.getFocalLength();
-		fl.toUnit(Unit.MILLI);
-		efl.toUnit(Unit.MILLI);
+		fl.setUnit(Unit.MILLI);
+		efl.setUnit(Unit.MILLI);
 		
 		/*
 		
@@ -59,9 +59,9 @@ public class CustomTelescope implements ITelescope
 	public IMeasurement getExitPupil(IEyepiece ep) 
 	{
 		IMeasurement efl = ep.getFocalLength();
-		d.toUnit(Unit.MILLI);
-		fl.toUnit(Unit.MILLI);
-		efl.toUnit(Unit.MILLI);
+		d.setUnit(Unit.MILLI);
+		fl.setUnit(Unit.MILLI);
+		efl.setUnit(Unit.MILLI);
 		
 		/*
 		
@@ -84,7 +84,7 @@ public class CustomTelescope implements ITelescope
 	{
 		IMeasurement mag = getMagnification(ep);
 		IMeasurement afov = ep.getApparentFieldOfView();
-		afov.toUnit(Unit.DEGREE);
+		afov.setUnit(Unit.DEGREE);
 		
 		double factor = mag.getValue();
 		double fov = afov.getValue();
@@ -94,7 +94,26 @@ public class CustomTelescope implements ITelescope
 		return new Measurement(tfov, Unit.DEGREE);
 	}
 	
-	
+	@Override
+	public IMeasurement getResolvingPower(IMeasurement wave)
+	{
+		wave.setUnit(Unit.NANO);
+		d.setUnit(Unit.METER);
+		
+		
+		/*
+		
+		sin(theta) = 1.22 * (wavelength / dT)
+		
+		*/
+		
+		
+		StrictMath.asin(0);
+		
+		
+		
+		return new Measurement(resp, Unit.RADIAN);
+	}
 	
 	
 }

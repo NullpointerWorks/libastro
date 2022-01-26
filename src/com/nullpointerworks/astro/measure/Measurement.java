@@ -28,7 +28,7 @@ public class Measurement implements IMeasurement
 		return cu;
 	}
 	
-	public boolean toUnit(Unit newUnit)
+	public boolean setUnit(Unit newUnit)
 	{
 		if (!fac.compatible(newUnit)) return false;
 		if (newUnit == u) return true;

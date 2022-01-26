@@ -13,6 +13,10 @@ import com.nullpointerworks.astro.measure.Unit;
 dT / (fully dilated eye) = LUM lowest useful magnification
 fT / LUM = eyepiece focal length
 
+
+sin(theta) = 1.22 * (wavelength / dT)
+
+
 */
 
 public class MainTest 

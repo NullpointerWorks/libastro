@@ -4,5 +4,5 @@ public interface IMeasurement
 {
 	double getValue();
 	Unit getUnit();
-	boolean toUnit(Unit newUnit);
+	boolean setUnit(Unit newUnit);
 }

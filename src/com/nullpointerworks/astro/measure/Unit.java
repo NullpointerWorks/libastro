@@ -3,12 +3,22 @@ package com.nullpointerworks.astro.measure;
 public enum Unit 
 {
 	/**
-	 * millimeters
+	 * meters 10^0
+	 */
+	METER,
+	
+	/**
+	 * millimeters 10^3
 	 */
 	MILLI,
 	
 	/**
-	 * nanometers
+	 * micrometers (micron) 10^6
+	 */
+	MICRO,
+	
+	/**
+	 * nanometers 10^9
 	 */
 	NANO,
 	

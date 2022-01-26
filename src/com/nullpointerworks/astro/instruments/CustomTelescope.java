@@ -97,8 +97,8 @@ public class CustomTelescope implements ITelescope
 	@Override
 	public IMeasurement getResolvingPower(IMeasurement wave)
 	{
-		wave.setUnit(Unit.MILLI);
-		d.setUnit(Unit.MILLI);
+		wave.setUnit(Unit.METER);
+		d.setUnit(Unit.METER);
 		
 		/*
 		

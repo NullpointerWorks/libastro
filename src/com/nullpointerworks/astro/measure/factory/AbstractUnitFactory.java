@@ -16,6 +16,8 @@ public interface AbstractUnitFactory
 		case MICRO: return new MeterUnitFactory(0.000001);
 		case NANO: return new MeterUnitFactory(0.000000001);
 		
+		case INCH: return new InchUnitFactory();
+		
 		case DEGREE: return new DegreeUnitFactory();
 		case RADIAN: return new RadianUnitFactory();
 		default: return null;

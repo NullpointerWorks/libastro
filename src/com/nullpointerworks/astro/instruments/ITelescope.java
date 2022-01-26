@@ -8,4 +8,7 @@ public interface ITelescope
 	IMeasurement getMagnification(IEyepiece ep);
 	IMeasurement getExitPupil(IEyepiece ep);
 	IMeasurement getTrueFieldOfView(IEyepiece ep);
+	
+	
+	
 }

@@ -58,6 +58,7 @@ public class MainTest
 		
 		IMeasurement wavelength = new Measurement(650.0, Unit.NANO);
 		IMeasurement resolve = scope.getResolvingPower(wavelength);
+		resolve.setUnit(Unit.ARCSECOND);
 		System.out.println("the minimum resolving power is: "+resolve.getValue() +" "+resolve.getUnit());
 		
 		

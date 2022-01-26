@@ -106,6 +106,8 @@ public class CustomTelescope implements ITelescope
 		
 		*/
 		
+		double dia = d.getValue();
+		if (dia < 0.0) dia = 0.0001f; // infinity error check
 		double theta = 1.22 * (wave.getValue() / d.getValue());
 		double resp = StrictMath.asin(theta);
 		return new Measurement(resp, Unit.RADIAN);

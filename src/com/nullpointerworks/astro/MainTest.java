@@ -59,13 +59,13 @@ public class MainTest
 		ISensor my1100DSLR			= new CustomSensor("Canon 1100D");
 		my1100DSLR.setPixelSize( new Measurement(5.2, Unit.MICRO) );
 		
-		ISensor myAtik320E			= new CustomSensor("Atil 320E Color");
+		ISensor myAtik320E			= new CustomSensor("Atik 320E Color");
 		myAtik320E.setPixelSize( new Measurement(4.4, Unit.MICRO) );
 		
 		/*
 		 * test the suitability of the sensor to the telescope
 		 */
-		testSuitibility(scopeTSO70ED, myAtik320E);
+		testSuitibility(scopeTSO70ED, myAtik320E, 0.2);
 		
 		
 		
@@ -94,7 +94,7 @@ public class MainTest
 	
 	// The ideal situation would be to match the resolving power and pixel resolution.
 	
-	void testSuitibility(ITelescope scope, ISensor sensor)
+	void testSuitibility(ITelescope scope, ISensor sensor, final double margin)
 	{
 		/*
 		 * find telescope's resolving power
@@ -116,7 +116,6 @@ public class MainTest
 		double scopeResolve = resolve.getValue();
 		double pixelResolution = pixRes.getValue();
 		double delta = pixelResolution - scopeResolve;
-		double margin = 0.2; // in arcsecond
 		
 		if (delta < -margin)
 		{

@@ -1,8 +1,10 @@
 package com.nullpointerworks.astro;
 
 import com.nullpointerworks.astro.instruments.CustomEyepiece;
+import com.nullpointerworks.astro.instruments.CustomSensor;
 import com.nullpointerworks.astro.instruments.CustomTelescope;
 import com.nullpointerworks.astro.instruments.IEyepiece;
+import com.nullpointerworks.astro.instruments.ISensor;
 import com.nullpointerworks.astro.instruments.ITelescope;
 import com.nullpointerworks.astro.measure.IMeasurement;
 import com.nullpointerworks.astro.measure.Measurement;
@@ -45,6 +47,14 @@ public class MainTest
 		ITelescope scope 				= new CustomTelescope(scopeDiameter, scopeFocalLength);
 		
 		/*
+		 * 
+		 */
+		ISensor myDeepSkyCamera			= new CustomSensor("Canon 350D");
+		myDeepSkyCamera.setPixelSize( new Measurement(6.4, Unit.MICRO) );
+		
+		
+		
+		/*
 		 * get some details
 		 */
 		IMeasurement focalRatio = scope.getFocalRatio();
@@ -60,6 +70,8 @@ public class MainTest
 		IMeasurement resolve = scope.getResolvingPower(wavelength);
 		resolve.setUnit(Unit.ARCSECOND);
 		System.out.println("the minimum resolving power is: "+resolve.getValue() +" "+resolve.getUnit());
+		
+		
 		
 		
 	}

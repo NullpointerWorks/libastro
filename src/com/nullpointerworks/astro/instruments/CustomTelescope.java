@@ -15,6 +15,16 @@ public class CustomTelescope implements ITelescope
 		fl = focallength;
 	}
 	
+	public IMeasurement getDiameter()
+	{
+		return d;
+	}
+	
+	public IMeasurement getFocalLength()
+	{
+		return fl;
+	}
+	
 	public IMeasurement getFocalRatio()
 	{
 		d.setUnit(Unit.MILLI);
@@ -28,7 +38,7 @@ public class CustomTelescope implements ITelescope
 		
 		double dia = d.getValue();
 		double focal = fl.getValue();
-		if (dia < 0.0) dia = 0.0001f; // infinity error check
+		if (dia <= 0.0) dia = 0.0001f; // infinity error check
 		double fr = focal / dia;
 		
 		return new Measurement(fr, Unit.FACTOR);
@@ -49,7 +59,7 @@ public class CustomTelescope implements ITelescope
 
 		double fE = efl.getValue();
 		double fT = fl.getValue();
-		if (fE < 0.0) fE = 0.0001f; // infinity error check
+		if (fE <= 0.0) fE = 0.0001f; // infinity error check
 		double mag = fT / fE;
 		
 		return new Measurement(mag, Unit.FACTOR);
@@ -73,7 +83,7 @@ public class CustomTelescope implements ITelescope
 		double fE = efl.getValue();
 		double dT = d.getValue();
 		double fT = fl.getValue();
-		if (fT < 0.0) fT = 0.0001f; // infinity error check
+		if (fT <= 0.0) fT = 0.0001f; // infinity error check
 		double exitPupil = (fE * dT) / fT;
 		
 		return new Measurement(exitPupil, Unit.MILLI);
@@ -88,7 +98,7 @@ public class CustomTelescope implements ITelescope
 		
 		double factor = mag.getValue();
 		double fov = afov.getValue();
-		if (factor < 0.0) factor = 0.0001f; // infinity error check
+		if (factor <= 0.0) factor = 0.0001f; // infinity error check
 		double tfov = fov / factor;
 		
 		return new Measurement(tfov, Unit.DEGREE);
@@ -107,7 +117,7 @@ public class CustomTelescope implements ITelescope
 		*/
 		
 		double dia = d.getValue();
-		if (dia < 0.0) dia = 0.0001f; // infinity error check
+		if (dia <= 0.0) dia = 0.0001f; // infinity error check
 		double theta = 1.22 * (wave.getValue() / d.getValue());
 		double resp = StrictMath.asin(theta);
 		return new Measurement(resp, Unit.RADIAN);

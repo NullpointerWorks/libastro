@@ -49,8 +49,11 @@ public class MainTest
 		/*
 		 * 
 		 */
-		ISensor myDeepSkyCamera			= new CustomSensor("Canon 350D");
-		myDeepSkyCamera.setPixelSize( new Measurement(6.4, Unit.MICRO) );
+		ISensor my350DSLR			= new CustomSensor("Canon 350D");
+		my350DSLR.setPixelSize( new Measurement(6.4, Unit.MICRO) );
+		
+		ISensor my1100DSLR			= new CustomSensor("Canon 1100D");
+		my1100DSLR.setPixelSize( new Measurement(5.2, Unit.MICRO) );
 		
 		
 		
@@ -66,10 +69,19 @@ public class MainTest
 		IMeasurement trueFOV = scope.getTrueFieldOfView(eyepiece);
 		System.out.println("the true field of view with the eyepiece is: "+trueFOV.getValue());
 		
+		/*
+		 * find telescope's resolving power
+		 */
 		IMeasurement wavelength = new Measurement(650.0, Unit.NANO);
 		IMeasurement resolve = scope.getResolvingPower(wavelength);
 		resolve.setUnit(Unit.ARCSECOND);
 		System.out.println("the minimum resolving power is: "+resolve.getValue() +" "+resolve.getUnit());
+		
+		/*
+		 * find sensor and telescope suitability
+		 */
+		IMeasurement pixRes = my350DSLR.getPixelResolution( scope.getFocalLength() );
+		System.out.println("Sensor resolution "+pixRes.getValue() + " "+pixRes.getUnit() +" per pixel");
 		
 		
 		

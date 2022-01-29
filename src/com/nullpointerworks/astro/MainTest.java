@@ -66,7 +66,7 @@ public class MainTest
 		
 		/*
 		 * get some details
-		 */
+		 *
 		IMeasurement focalRatio = scopeTSO70ED.getFocalRatio();
 		System.out.println("telescope's focal ratio: "+focalRatio.getValue());
 		
@@ -75,7 +75,7 @@ public class MainTest
 		
 		IMeasurement trueFOV = scopeTSO70ED.getTrueFieldOfView(eyepiece);
 		System.out.println("the true field of view with the eyepiece is: "+trueFOV.getValue());
-		
+		//*/
 	}
 	
 	

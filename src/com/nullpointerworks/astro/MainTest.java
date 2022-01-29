@@ -68,19 +68,18 @@ public class MainTest
 		testSuitibility(scopeTSO70ED, myAtik320E, 0.2);
 		
 		
-		
 		/*
 		 * get some details
-		 *
-		IMeasurement focalRatio = scope.getFocalRatio();
+		 */
+		IMeasurement focalRatio = scopeTSO70ED.getFocalRatio();
 		System.out.println("telescope's focal ratio: "+focalRatio.getValue());
 		
-		IMeasurement exitPupil = scope.getExitPupil(eyepiece);
+		IMeasurement exitPupil = scopeTSO70ED.getExitPupil(eyepiece);
 		System.out.println("exit pupil for the eyepiece is: "+exitPupil.getValue());
 		
-		IMeasurement trueFOV = scope.getTrueFieldOfView(eyepiece);
+		IMeasurement trueFOV = scopeTSO70ED.getTrueFieldOfView(eyepiece);
 		System.out.println("the true field of view with the eyepiece is: "+trueFOV.getValue());
-		//*/
+		
 	}
 	
 
@@ -130,6 +129,7 @@ public class MainTest
 		{
 			System.out.println("This setup is pretty good!");
 		}
+		System.out.println();
 	}
 	
 }

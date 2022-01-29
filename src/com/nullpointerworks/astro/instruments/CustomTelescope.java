@@ -56,7 +56,7 @@ public class CustomTelescope implements ITelescope
 		fT / fE = mag
 		
 		*/
-
+		
 		double fE = efl.getValue();
 		double fT = fl.getValue();
 		if (fE <= 0.0) fE = 0.0001f; // infinity error check

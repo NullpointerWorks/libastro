@@ -5,7 +5,6 @@ import com.nullpointerworks.astro.measure.factory.AbstractUnitFactory;
 public class Measurement implements IMeasurement
 {
 	private final double v;
-	private final Unit u;
 	private final AbstractUnitFactory fac;
 	
 	private double cv;
@@ -14,8 +13,8 @@ public class Measurement implements IMeasurement
 	public Measurement(double value, Unit unit) 
 	{
 		cv = v = value;
-		cu = u = unit;
-		fac = AbstractUnitFactory.getFactory(u);
+		cu = unit;
+		fac = AbstractUnitFactory.getFactory(unit);
 	}
 	
 	public double getValue()
@@ -31,7 +30,7 @@ public class Measurement implements IMeasurement
 	public boolean setUnit(Unit newUnit)
 	{
 		if (!fac.compatible(newUnit)) return false;
-		if (newUnit == u) return true;
+		if (newUnit == cu) return true;
 		cv = fac.convert(v, newUnit);
 		cu = newUnit;
 		return true;

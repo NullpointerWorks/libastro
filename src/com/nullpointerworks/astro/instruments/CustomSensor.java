@@ -30,7 +30,7 @@ public class CustomSensor implements ISensor
 		tfl.setUnit(Unit.MILLI);
 		pixSize.setUnit(Unit.MICRO);
 		final double factor = 206.265;
-
+		
 		double fl = tfl.getValue();
 		if (fl <= 0.0) fl = 0.0001;
 		double px = pixSize.getValue();

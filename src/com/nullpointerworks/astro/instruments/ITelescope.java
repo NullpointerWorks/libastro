@@ -8,6 +8,16 @@ public interface ITelescope
 	/**
 	 * 
 	 */
+	void setDiameter(IMeasurement d);
+	
+	/**
+	 * 
+	 */
+	void setFocalLength(IMeasurement fl);
+	
+	/**
+	 * 
+	 */
 	IMeasurement getDiameter();
 	
 	/**

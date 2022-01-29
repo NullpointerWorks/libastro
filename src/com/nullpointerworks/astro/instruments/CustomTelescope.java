@@ -9,21 +9,19 @@ public class CustomTelescope implements ITelescope
 	private IMeasurement d;
 	private IMeasurement fl;
 	
+	public CustomTelescope() {}
+	
 	public CustomTelescope(IMeasurement aperature, IMeasurement focallength)
 	{
-		d = aperature;
-		fl = focallength;
+		setDiameter(aperature);
+		setFocalLength(focallength);
 	}
 	
-	public IMeasurement getDiameter()
-	{
-		return d;
-	}
+	public void setDiameter(IMeasurement aperature) {d = aperature;}
+	public void setFocalLength(IMeasurement focallength) {fl = focallength;}
 	
-	public IMeasurement getFocalLength()
-	{
-		return fl;
-	}
+	public IMeasurement getDiameter() {return d;}
+	public IMeasurement getFocalLength() {return fl;}
 	
 	public IMeasurement getFocalRatio()
 	{

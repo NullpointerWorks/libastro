@@ -15,10 +15,6 @@ import com.nullpointerworks.astro.measure.Unit;
 dT / (fully dilated eye) = LUM lowest useful magnification
 fT / LUM = eyepiece focal length
 
-
-sin(theta) = 1.22 * (wavelength / dT)
-
-
 */
 
 public class MainTest 
@@ -35,20 +31,20 @@ public class MainTest
 		/*
 		 * define an eyepiece
 		 */
-		IMeasurement eyepieceFL 	= new Measurement(25.0, Unit.MILLI);
-		IMeasurement eyepieceAFOV 	= new Measurement(52.0, Unit.DEGREE);
-		IEyepiece eyepiece 			= new CustomEyepiece(eyepieceFL, eyepieceAFOV);
+		IEyepiece eyepiece = new CustomEyepiece();
+		eyepiece.setFocalLength( new Measurement(25.0, Unit.MILLI) );
+		eyepiece.setApparentFieldOfView( new Measurement(52.0, Unit.DEGREE) );
 		
 		/*
 		 * define a telescope
 		 */
-		IMeasurement scopeDiameter 		= new Measurement(70.0, Unit.MILLI);
-		IMeasurement scopeFocalLength 	= new Measurement(420.0, Unit.MILLI);
-		ITelescope scopeTSO70ED			= new CustomTelescope(scopeDiameter, scopeFocalLength);
+		ITelescope scopeTSO70ED = new CustomTelescope();
+		scopeTSO70ED.setDiameter( new Measurement(70.0, Unit.MILLI) );
+		scopeTSO70ED.setFocalLength( new Measurement(420.0, Unit.MILLI) );
 		
-		IMeasurement pdsDiameter 		= new Measurement(130.0, Unit.MILLI);
-		IMeasurement pdsFocalLength 	= new Measurement(650.0, Unit.MILLI);
-		ITelescope scope130PDS			= new CustomTelescope(pdsDiameter, pdsFocalLength);
+		ITelescope scope130PDS = new CustomTelescope();
+		scope130PDS.setDiameter( new Measurement(130.0, Unit.MILLI) );
+		scope130PDS.setFocalLength( new Measurement(650.0, Unit.MILLI) );
 		
 		/*
 		 * 
@@ -65,7 +61,7 @@ public class MainTest
 		/*
 		 * test the suitability of the sensor to the telescope
 		 */
-		testSuitibility(scopeTSO70ED, myAtik320E, 0.2);
+		testSuitibility(scope130PDS, myAtik320E, 0.4);
 		
 		
 		/*
@@ -82,14 +78,14 @@ public class MainTest
 		
 	}
 	
-
+	
 	// If the resolving power of your telescope is better then the pixel resolution of the sensor
 	// then your sensor is not able to catch the detail provided by the telescope. 
-	// This means the sensor is undersampling.
+	// This means the sensor is undersampling. You get fewer detail in the image.
 	
 	// If however the pixel resolution of the sensor is better than the resolving power of the telescope
 	// the image may look blurry when viewed at normal resolution. 
-	// This means the sensor is oversampling.
+	// This means the sensor is oversampling. You may see more noise in the image.
 	
 	// The ideal situation would be to match the resolving power and pixel resolution.
 	
@@ -98,7 +94,7 @@ public class MainTest
 		/*
 		 * find telescope's resolving power
 		 */
-		IMeasurement wavelength = new Measurement(650.0, Unit.NANO);
+		IMeasurement wavelength = new Measurement(700.0, Unit.NANO); // the eye can see from approximately 380 to 700 nanometers
 		IMeasurement resolve = scope.getResolvingPower(wavelength);
 		resolve.setUnit(Unit.ARCSECOND);
 		System.out.println("minimum resolving power is: "+resolve.getValue() +" "+resolve.getUnit());

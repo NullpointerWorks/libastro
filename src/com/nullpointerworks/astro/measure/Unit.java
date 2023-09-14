@@ -1,59 +1,67 @@
 package com.nullpointerworks.astro.measure;
 
+/**
+ * 
+ */
 public enum Unit 
 {
 	/**
 	 * meters 10^0
 	 */
-	METER,
+	METER("m"),
 	
 	/**
-	 * millimeters 10^3
+	 * millimeters 10^-3
 	 */
-	MILLI,
+	MILLI("mm"),
 	
 	/**
-	 * micrometers (micron) 10^6
+	 * micrometers (micron) 10^-6
 	 */
-	MICRO,
+	MICRO("um"),
 	
 	/**
-	 * nanometers 10^9
+	 * nanometers 10^-9
 	 */
-	NANO,
+	NANO("nm"),
+	
+	// ================================================
 	
 	/**
 	 * inches
 	 */
-	INCH,
+	INCH("inch"),
 
 	// ================================================
 	
 	/**
 	 * a ratio
 	 */
-	FACTOR,
+	RATIO("ratio"),
 	
 	// ================================================
 	
 	/**
-	 * angle in degrees
-	 */
-	DEGREE,
-	
-	/**
 	 * angle in radians
 	 */
-	RADIAN,
+	RADIAN("rad"),
+	
+	/**
+	 * angle in degrees
+	 */
+	DEGREE("deg"),
 	
 	/**
 	 * one minute of arc
 	 */
-	ARCMINUTE,
+	ARCMINUTE("arcmin"),
 	
 	/**
 	 * one second of arc
 	 */
-	ARCSECOND
+	ARCSECOND("arcsec");
 	
+	private final String name;
+	private Unit(String n) {name = n;}
+	public String toString() {return name;}
 }

@@ -6,17 +6,23 @@ import com.nullpointerworks.astro.measure.Unit;
 
 public class CustomTelescope implements ITelescope 
 {
+	private String n;
 	private IMeasurement d;
 	private IMeasurement fl;
 	
-	public CustomTelescope() {}
-	
-	public CustomTelescope(IMeasurement aperature, IMeasurement focallength)
+	public CustomTelescope(String name) 
 	{
+		n = name;
+	}
+	
+	public CustomTelescope(String name, IMeasurement aperature, IMeasurement focallength)
+	{
+		n = name;
 		setDiameter(aperature);
 		setFocalLength(focallength);
 	}
 	
+	public String getName() {return n;}
 	public void setDiameter(IMeasurement aperature) {d = aperature;}
 	public void setFocalLength(IMeasurement focallength) {fl = focallength;}
 	
@@ -39,7 +45,7 @@ public class CustomTelescope implements ITelescope
 		if (dia <= 0.0) dia = 0.0001f; // infinity error check
 		double fr = focal / dia;
 		
-		return new Measurement(fr, Unit.FACTOR);
+		return new Measurement(fr, Unit.RATIO);
 	}
 
 	@Override
@@ -60,7 +66,7 @@ public class CustomTelescope implements ITelescope
 		if (fE <= 0.0) fE = 0.0001f; // infinity error check
 		double mag = fT / fE;
 		
-		return new Measurement(mag, Unit.FACTOR);
+		return new Measurement(mag, Unit.RATIO);
 	}
 
 	@Override
@@ -102,6 +108,9 @@ public class CustomTelescope implements ITelescope
 		return new Measurement(tfov, Unit.DEGREE);
 	}
 	
+	/**
+	 * Calculated the resolving power in radians using the Rayleigh criterion formula at a specified wavelength. 
+	 */
 	@Override
 	public IMeasurement getResolvingPower(IMeasurement wave)
 	{

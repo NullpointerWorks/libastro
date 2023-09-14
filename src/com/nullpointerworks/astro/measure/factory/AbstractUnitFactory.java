@@ -17,9 +17,12 @@ public interface AbstractUnitFactory
 		case NANO: return new MeterUnitFactory(0.000000001);
 		
 		case INCH: return new InchUnitFactory();
-		
+
+		case ARCMINUTE:
+		case ARCSECOND:
 		case DEGREE: return new DegreeUnitFactory();
 		case RADIAN: return new RadianUnitFactory();
+		
 		default: return null;
 		}
 	}

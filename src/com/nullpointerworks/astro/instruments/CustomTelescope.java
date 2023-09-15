@@ -38,7 +38,7 @@ public class CustomTelescope implements ITelescope
 		
 		/*
 		
-		fT / dT = fR
+		fR = fT / dT
 		
 		*/
 		
@@ -59,7 +59,7 @@ public class CustomTelescope implements ITelescope
 		
 		/*
 		
-		fT / fE = mag
+		mag = fT / fE
 		
 		*/
 		
@@ -70,7 +70,7 @@ public class CustomTelescope implements ITelescope
 		
 		return new Measurement(mag, Unit.RATIO);
 	}
-
+	
 	@Override
 	public IMeasurement getExitPupil(IEyepiece ep) 
 	{
@@ -81,8 +81,8 @@ public class CustomTelescope implements ITelescope
 		
 		/*
 		
-		fE / fR = exit pupil
-		(fE * dT) / fT = exit pupil
+		exit pupil = fE / fR
+		exit pupil = (fE * dT) / fT
 		
 		*/
 		

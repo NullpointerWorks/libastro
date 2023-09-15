@@ -51,13 +51,13 @@ public class MainTest
 		
 		ISensor my1100DSLR	= new CustomSensor("Canon EOS 1100D (APS-C)");
 		my1100DSLR.setPixelSize( 	MICRO.value(5.2) );
-		my350DSLR.setSensorSize( 	MILLI.value(22.2), MILLI.value(14.8) );
-		my350DSLR.setResolution( 	PIXEL.value(4272), PIXEL.value(2848) );
+		my1100DSLR.setSensorSize( 	MILLI.value(22.2), MILLI.value(14.8) );
+		my1100DSLR.setResolution( 	PIXEL.value(4272), PIXEL.value(2848) );
 		
 		ISensor myAtik320E	= new CustomSensor("Atik 320E Color (Sony ICX274)");
 		myAtik320E.setPixelSize( 	MICRO.value(4.4) );
-		my350DSLR.setSensorSize( 	MILLI.value(7.18), MILLI.value(5.32) ); // 1/1.8" size
-		my350DSLR.setResolution(	PIXEL.value(1620), PIXEL.value(1220) );
+		myAtik320E.setSensorSize( 	MILLI.value(7.18), MILLI.value(5.32) ); // 1/1.8" size
+		myAtik320E.setResolution(	PIXEL.value(1620), PIXEL.value(1220) );
 		
 		ISensor myDMK21AU04	= new CustomSensor("DMK 21AU04.AS (Sony ICX098BL)");
 		myDMK21AU04.setPixelSize( 	MICRO.value(5.6) );
@@ -70,10 +70,14 @@ public class MainTest
 		//System.out.println();
 		
 		//test the suitability of the sensor to the telescope
-		testSuitibility(scope70ED, my350DSLR, 0.2);
+		
+		testSuitibility(scope70ED, myAtik320E, 0.2);
+		
+		
+		
 	}
 	
-	private void additionalDetails(ITelescope scope, IEyepiece eyepiece) 
+	void additionalDetails(ITelescope scope, IEyepiece eyepiece) 
 	{
 		IMeasurement focalRatio = scope.getFocalRatio();
 		System.out.println("telescope's focal ratio: "+focalRatio.getValue());

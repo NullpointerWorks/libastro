@@ -10,8 +10,8 @@ public class CustomSensor implements ISensor
 	private IMeasurement pixSize;
 	private IMeasurement sensorWidth;
 	private IMeasurement sensorHeight;
-	private int resolutionWidth;
-	private int resolutionHeight;
+	private IMeasurement resolutionWidth;
+	private IMeasurement resolutionHeight;
 	
 	public CustomSensor() {}
 	
@@ -19,6 +19,8 @@ public class CustomSensor implements ISensor
 	{
 		setSensorName(name);
 	}
+
+	// == setters ============================================================
 	
 	public void setSensorName(String name) 
 	{
@@ -36,14 +38,13 @@ public class CustomSensor implements ISensor
 		sensorHeight = sensorh;
 	}
 	
-	public void setSensorResolution(int width, int height) 
+	public void setResolution(IMeasurement width, IMeasurement height) 
 	{
 		resolutionWidth = width;
 		resolutionHeight = height;
 	}
 	
-	
-	
+	// == getters ============================================================
 	
 	public String getSensorName()
 	{
@@ -55,7 +56,10 @@ public class CustomSensor implements ISensor
 		return pixSize;
 	}
 	
-	public IMeasurement getPixelResolution(ITelescope scope)
+	/**
+	 * 
+	 */
+	public IMeasurement getPixelAngularResolution(ITelescope scope)
 	{
 		IMeasurement focallength = scope.getFocalLength();
 		focallength.setUnit(Unit.MILLI);
@@ -69,5 +73,23 @@ public class CustomSensor implements ISensor
 		return new Measurement(arc, Unit.ARCSECOND);
 	}
 	
+	public IMeasurement getSensorWidth()
+	{
+		return sensorWidth;
+	}
 	
+	public IMeasurement getSensorHeight()
+	{
+		return sensorHeight;
+	}
+	
+	public IMeasurement getResolutionWidth()
+	{
+		return resolutionWidth;
+	}
+	
+	public IMeasurement getResolutionHeight()
+	{
+		return resolutionHeight;
+	}
 }

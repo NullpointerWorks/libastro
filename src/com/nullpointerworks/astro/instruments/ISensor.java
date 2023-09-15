@@ -10,8 +10,7 @@ public interface ISensor
 	
 	void setSensorSize(IMeasurement sensorw, IMeasurement sensorh);
 	
-	void setSensorResolution(int pxw, int pxh);
-	
+	void setResolution(IMeasurement pxw, IMeasurement pxh);
 	
 	
 	
@@ -19,6 +18,14 @@ public interface ISensor
 	
 	IMeasurement getPixelSize();
 	
-	IMeasurement getPixelResolution(ITelescope scope);
+	IMeasurement getPixelAngularResolution(ITelescope scope);
+	
+	IMeasurement getSensorWidth();
+	
+	IMeasurement getSensorHeight();
+	
+	IMeasurement getResolutionWidth();
+	
+	IMeasurement getResolutionHeight();
 	
 }

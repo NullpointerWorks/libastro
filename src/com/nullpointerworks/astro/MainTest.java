@@ -29,56 +29,52 @@ public class MainTest
 	{
 		// eyepieces
 		IEyepiece eyepiece30 = new CustomEyepiece();
-		eyepiece30.setFocalLength( new Measurement(30.0, MILLI) );
-		eyepiece30.setApparentFieldOfView( new Measurement(69.0, DEGREE) );
+		eyepiece30.setFocalLength( MILLI.value(30) );
+		eyepiece30.setApparentFieldOfView( DEGREE.value(69) );
 		
 		
 		// telescopes
 		ITelescope scope70ED = new CustomTelescope("TSO 70ED");
-		scope70ED.setDiameter( new Measurement(70.0, MILLI) );
-		scope70ED.setFocalLength( new Measurement(420.0, MILLI) );
+		scope70ED.setDiameter( 		MILLI.value(70) );
+		scope70ED.setFocalLength( 	MILLI.value(420) );
 		
 		ITelescope scope130PDS = new CustomTelescope("Skywatcher 130PDS");
-		scope130PDS.setDiameter( new Measurement(130.0, MILLI) );
-		scope130PDS.setFocalLength( new Measurement(650.0, MILLI) );
+		scope130PDS.setDiameter( 	MILLI.value(130) );
+		scope130PDS.setFocalLength( MILLI.value(650) );
 		
 		
 		// sensors
 		ISensor my350DSLR	= new CustomSensor("Canon EOS 350D (APS-C)");
-		my350DSLR.setPixelSize( new Measurement(6.4, MICRO) );
-		my350DSLR.setSensorSize( new Measurement(22.2, MILLI), new Measurement(14.8, MILLI) );
-		my350DSLR.setSensorResolution(3464, 2309);
+		my350DSLR.setPixelSize( 	MICRO.value(6.4) );
+		my350DSLR.setSensorSize( 	MILLI.value(22.2), MILLI.value(14.8) );
+		my350DSLR.setResolution( 	PIXEL.value(3464), PIXEL.value(2309));
 		
 		
 		ISensor my1100DSLR	= new CustomSensor("Canon EOS 1100D (APS-C)");
-		my1100DSLR.setPixelSize( new Measurement(5.2, MICRO) );
-		my350DSLR.setSensorSize( new Measurement(22.2, MILLI), new Measurement(14.7, MILLI) );
-		my350DSLR.setSensorResolution(4272, 2848);
+		my1100DSLR.setPixelSize( 	MICRO.value(5.2) );
+		my350DSLR.setSensorSize( 	MILLI.value(22.2), MILLI.value(14.8) );
+		my350DSLR.setResolution( 	PIXEL.value(4272), PIXEL.value(2848) );
 		
 		
 		ISensor myAtik320E	= new CustomSensor("Atik 320E Color (Sony ICX274)");
-		myAtik320E.setPixelSize( new Measurement(4.4, MICRO) );
-		my350DSLR.setSensorSize( new Measurement(7.18, MILLI), new Measurement(5.32, MILLI) ); // 1/1.8" size
-		my350DSLR.setSensorResolution(1620, 1220);
+		myAtik320E.setPixelSize( 	MICRO.value(4.4) );
+		my350DSLR.setSensorSize( 	MILLI.value(7.18), MILLI.value(5.32) ); // 1/1.8" size
+		my350DSLR.setResolution(	PIXEL.value(1620), PIXEL.value(1220) );
 		
 		
 		ISensor myDMK21AU04	= new CustomSensor("DMK 21AU04.AS (Sony ICX098BL)");
-		myDMK21AU04.setPixelSize( new Measurement(5.6, MICRO) );
-		myDMK21AU04.setSensorSize( new Measurement(3.2, MILLI), new Measurement(2.4, MILLI) ); // 1/4" size
-		myDMK21AU04.setSensorResolution(640, 480);
-		
-		
-		
+		myDMK21AU04.setPixelSize( 	MICRO.value(5.6) );
+		myDMK21AU04.setSensorSize( 	MILLI.value(3.2), MILLI.value(2.4) ); // 1/4" size
+		myDMK21AU04.setResolution( 	PIXEL.value(640), PIXEL.value(480));
 		
 		
 		// get some details
-		additionalDetails(scope70ED, eyepiece30);
-		System.out.println();
+		//additionalDetails(scope70ED, eyepiece30);
+		//System.out.println();
 		
 		//test the suitability of the sensor to the telescope
 		testSuitibility(scope70ED, myAtik320E, 0.4);
 	}
-	
 	
 	private void additionalDetails(ITelescope scope, IEyepiece eyepiece) 
 	{
@@ -115,7 +111,7 @@ public class MainTest
 		/*
 		 * find sensor's pixel resolution
 		 */
-		IMeasurement pixRes = sensor.getPixelResolution(scope);
+		IMeasurement pixRes = sensor.getPixelAngularResolution(scope);
 		pixRes.setUnit(ARCSECOND);
 		
 		System.out.println("Minimum resolving power:   "+resolve.getValue() +" "+resolve.getUnit());

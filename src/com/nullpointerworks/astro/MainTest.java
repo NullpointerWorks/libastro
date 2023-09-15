@@ -49,18 +49,15 @@ public class MainTest
 		my350DSLR.setSensorSize( 	MILLI.value(22.2), MILLI.value(14.8) );
 		my350DSLR.setResolution( 	PIXEL.value(3464), PIXEL.value(2309));
 		
-		
 		ISensor my1100DSLR	= new CustomSensor("Canon EOS 1100D (APS-C)");
 		my1100DSLR.setPixelSize( 	MICRO.value(5.2) );
 		my350DSLR.setSensorSize( 	MILLI.value(22.2), MILLI.value(14.8) );
 		my350DSLR.setResolution( 	PIXEL.value(4272), PIXEL.value(2848) );
 		
-		
 		ISensor myAtik320E	= new CustomSensor("Atik 320E Color (Sony ICX274)");
 		myAtik320E.setPixelSize( 	MICRO.value(4.4) );
 		my350DSLR.setSensorSize( 	MILLI.value(7.18), MILLI.value(5.32) ); // 1/1.8" size
 		my350DSLR.setResolution(	PIXEL.value(1620), PIXEL.value(1220) );
-		
 		
 		ISensor myDMK21AU04	= new CustomSensor("DMK 21AU04.AS (Sony ICX098BL)");
 		myDMK21AU04.setPixelSize( 	MICRO.value(5.6) );
@@ -73,7 +70,7 @@ public class MainTest
 		//System.out.println();
 		
 		//test the suitability of the sensor to the telescope
-		testSuitibility(scope70ED, myAtik320E, 0.4);
+		testSuitibility(scope70ED, my350DSLR, 0.2);
 	}
 	
 	private void additionalDetails(ITelescope scope, IEyepiece eyepiece) 
@@ -104,9 +101,10 @@ public class MainTest
 		/*
 		 * find telescope's resolving power
 		 */
-		IMeasurement wavelength = new Measurement(700.0, NANO); // the eye can see approximately 380 to 700 nanometers
+		IMeasurement wavelength = NANO.value(400.0); // the human eye can see approximately 380 to 740 nanometer wavelengths
 		IMeasurement resolve = scope.getResolvingPower(wavelength);
 		resolve.setUnit(ARCSECOND);
+		System.out.println("Resolving power:    "+resolve.getValue() +" "+resolve.getUnit());
 		
 		/*
 		 * find sensor's pixel resolution
@@ -114,8 +112,7 @@ public class MainTest
 		IMeasurement pixRes = sensor.getPixelAngularResolution(scope);
 		pixRes.setUnit(ARCSECOND);
 		
-		System.out.println("Minimum resolving power:   "+resolve.getValue() +" "+resolve.getUnit());
-		System.out.println("Sensor resolution:         "+pixRes.getValue() + " "+pixRes.getUnit() +" per pixel");
+		System.out.println("Sensor resolution:  "+pixRes.getValue() + " "+pixRes.getUnit() +" per pixel");
 		
 		/*
 		 * compare the two

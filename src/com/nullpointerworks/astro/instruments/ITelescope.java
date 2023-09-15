@@ -54,7 +54,12 @@ public interface ITelescope
 	
 
 	/**
-	 * Calculated the resolving power in radians using the Rayleigh criterion formula at a specified wavelength. 
+	 * The resolving power of a telescope is it's ability to distinguish details of incoming light. 
+	 * When two packages of light get too close together they blend and mix their respective colors which in turn means detail was lost.
+	 * The angle between two beams of light that the optics can just about tell apart is called the Rayleigh criterion. 
+	 * This however depends on the size of the objective and the wavelength of light.
+	 * <br><br>
+	 * In practice the telescope's resolving power tells you the minimal angular size of a target you're still able to observe.
 	 */
 	IMeasurement getResolvingPower(IMeasurement wave);
 	

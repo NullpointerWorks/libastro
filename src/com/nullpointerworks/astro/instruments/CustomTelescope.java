@@ -6,6 +6,7 @@ import com.nullpointerworks.astro.measure.Unit;
 
 public class CustomTelescope implements ITelescope 
 {
+	private final double INFINITY = 0.00001;
 	private String n;
 	private IMeasurement d;
 	private IMeasurement fl;
@@ -27,6 +28,7 @@ public class CustomTelescope implements ITelescope
 	public void setFocalLength(IMeasurement focallength) {fl = focallength;}
 	
 	public IMeasurement getDiameter() {return d;}
+	
 	public IMeasurement getFocalLength() {return fl;}
 	
 	public IMeasurement getFocalRatio()
@@ -42,7 +44,7 @@ public class CustomTelescope implements ITelescope
 		
 		double dia = d.getValue();
 		double focal = fl.getValue();
-		if (dia <= 0.0) dia = 0.0001f; // infinity error check
+		if (dia <= 0.0) dia = INFINITY; // infinity check
 		double fr = focal / dia;
 		
 		return new Measurement(fr, Unit.RATIO);
@@ -63,7 +65,7 @@ public class CustomTelescope implements ITelescope
 		
 		double fE = efl.getValue();
 		double fT = fl.getValue();
-		if (fE <= 0.0) fE = 0.0001f; // infinity error check
+		if (fE <= 0.0) fE = INFINITY; // infinity check
 		double mag = fT / fE;
 		
 		return new Measurement(mag, Unit.RATIO);
@@ -87,7 +89,7 @@ public class CustomTelescope implements ITelescope
 		double fE = efl.getValue();
 		double dT = d.getValue();
 		double fT = fl.getValue();
-		if (fT <= 0.0) fT = 0.0001f; // infinity error check
+		if (fT <= 0.0) fT = INFINITY; // infinity check
 		double exitPupil = (fE * dT) / fT;
 		
 		return new Measurement(exitPupil, Unit.MILLI);
@@ -102,7 +104,7 @@ public class CustomTelescope implements ITelescope
 		
 		double factor = mag.getValue();
 		double fov = afov.getValue();
-		if (factor <= 0.0) factor = 0.0001f; // infinity error check
+		if (factor <= 0.0) factor = INFINITY; // infinity check
 		double tfov = fov / factor;
 		
 		return new Measurement(tfov, Unit.DEGREE);
@@ -112,9 +114,9 @@ public class CustomTelescope implements ITelescope
 	 * Calculated the resolving power in radians using the Rayleigh criterion formula at a specified wavelength. 
 	 */
 	@Override
-	public IMeasurement getResolvingPower(IMeasurement wave)
+	public IMeasurement getResolvingPower(IMeasurement wavelength)
 	{
-		wave.setUnit(Unit.METER);
+		wavelength.setUnit(Unit.METER);
 		d.setUnit(Unit.METER);
 		
 		/*
@@ -124,8 +126,8 @@ public class CustomTelescope implements ITelescope
 		*/
 		
 		double dia = d.getValue();
-		if (dia <= 0.0) dia = 0.0001f; // infinity error check
-		double theta = 1.22 * (wave.getValue() / d.getValue());
+		if (dia <= 0.0) dia = INFINITY; // infinity check
+		double theta = 1.22 * (wavelength.getValue() / d.getValue());
 		double resp = StrictMath.asin(theta);
 		return new Measurement(resp, Unit.RADIAN);
 	}
